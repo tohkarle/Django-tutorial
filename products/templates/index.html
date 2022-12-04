@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+<body>
+    {% block content %}
+        <h1>Products</h1>
+        <div class="row">
+            {% for product in products %}
+                <div class="col">
+                    <div id="product_card" class="card" style="width: 18rem;">
+                        <img src="{{ product.image_url }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">${{ product.price }}</p>
+                            <a href="#" class="btn btn-primary add-to-cart" style="background-color: #44A444; border-width: 0px;" >ADD TO CART</a>   
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <script>
+            const buttons =  document.getElementsByClassName('add-to-cart');
+            for (const button of buttons) {
+                button.addEventListener('click', function() {
+                alert("Successfully added to cart!");
+            })
+            }
+        </script> 
+    {% endblock %}
+</body>
